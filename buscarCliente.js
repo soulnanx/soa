@@ -16,7 +16,7 @@
         exibeClienteNaoEncontrado(cpfCliente)
       } else {
         fetch(replaceUrl(url))
-         .then(resp => resp.json())
+         .then(resp => resp[0].json())
          .then(cliente => exibeCliente(cliente))
       }
 
