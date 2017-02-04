@@ -15,7 +15,7 @@
       } else if (cpfCliente == 321){
         exibeClienteNaoEncontrado(cpfCliente)
       } else {
-        fetch('https://api.github.com')
+        fetch(replaceUrl(url))
          .then(resp => resp.json())
          .then(cliente => exibeCliente(cliente))
       }
