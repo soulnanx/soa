@@ -30,9 +30,9 @@ document.getElementById("cpfCliente").value = cpfCliente
         if (document.getElementById("enderecoEntrega").value){
           url = url.concat("&enderecoEntrega=" + document.getElementById("enderecoEntrega").value)}
 
-        alert(url)
+        alert(replaceUrl(url))
 
-        fetch(url)
+        fetch(replaceUrl(url))
 	       .then(resp => {alert("ok");resp.json()})
          .then(api => alert(api))
          .catch(error => alert("Erro ao tentar " + url))
