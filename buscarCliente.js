@@ -1,27 +1,28 @@
 
-  function buscarPorCpf(cpfCliente){
+  function buscarPorCpf(){
       var url = "http://localhost:8081/cliente/?ComandoSQL=SELECT&"
+      var cpfCliente = document.getElementById("cpfCliente").value
 
-      if (!document.getElementById("cpfCliente").value){
+      if (!cpfCliente){
         alert("O campo cpf é obrigatório")
         return
       } else {
-        url = url.concat("&cpfCliente=" + document.getElementById("cpfCliente").value)
+        url = url.concat("&cpfCliente=" + cpfCliente)
       }
 
-      fetch('https://api.github.com')
-       .then(resp => resp.json())
-       .then(cliente => exibeCliente(cliente))
+      if (cpfCliente == 123){
+        exibeCliente(mockDeCliente())
+      } else if (cpfCliente == 321){
+        exibeClienteNaoEncontrado(cpfCliente)
+      } else {
+        fetch('https://api.github.com')
+         .then(resp => resp.json())
+         .then(cliente => exibeCliente(cliente))
+      }
+
   }
 
   function exibeCliente(cliente){
-    cliente = {"nome":"João",
-    "cpfCliente": 654654654,
-    "rg":321321321,
-    "telefoneFixo": "6546-6412",
-    "telefoneMovel": "4444-5555",
-    "enderecoCobranca":"Rua hipodromo 1024",
-    "enderecoEntrega": "Rua Almirante brasil"}
 
     var html =""
     html = html.concat("<ul>")
@@ -42,4 +43,28 @@
   function deletar(cpf){
     alert(cpf)
 
+  }
+
+  function exibeClienteNaoEncontrado(cpfCliente){
+    var html =""
+    html = html.concat("<p>Cliente não encontrado!</p>")
+
+    html = html.concat("<button id='cadastrar' onclick='navegarParaCadastro(" + cpfCliente + ")'> cadastrar cliente </button>")
+    document.getElementById("listaCliente").innerHTML = html;
+
+  }
+
+  function navegarParaCadastro(cpfCliente){
+    window.location.replace("cadastroCliente.html?cpf=" + cpfCliente);
+  }
+
+  function mockDeCliente(){
+    cliente = {"nome":"João",
+    "cpfCliente": 654654654,
+    "rg":321321321,
+    "telefoneFixo": "6546-6412",
+    "telefoneMovel": "4444-5555",
+    "enderecoCobranca":"Rua hipodromo 1024",
+    "enderecoEntrega": "Rua Almirante brasil"}
+    return cliente
   }

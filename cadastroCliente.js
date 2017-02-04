@@ -1,3 +1,6 @@
+var cpfCliente = getParameterByName("cpf")
+document.getElementById("cpfCliente").value = cpfCliente
+
 
     function enviar(){
         var url = "http://localhost:8081/cliente/?ComandoSQL=INSERT&"
@@ -29,9 +32,11 @@
 
         alert(url)
 
-        //fetch('https://api.github.com')
-	       //.then(resp => resp.json())
-        // .then(api => alert(api.user_url))
+        fetch(url)
+	       .then(resp => {alert("ok");resp.json()})
+         .then(api => alert(api))
+         .catch(error => alert("Erro ao tentar " + url))
+
     }
 
     function buscarPorCpf(cpfCliente){
