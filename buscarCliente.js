@@ -7,7 +7,7 @@
         alert("O campo cpf é obrigatório")
         return
       } else {
-        url = url.concat("&cpfCliente=" + cpfCliente)
+        url = url.concat("cpfCliente=" + cpfCliente)
       }
 
       if (cpfCliente == 123){
@@ -15,9 +15,11 @@
       } else if (cpfCliente == 321){
         exibeClienteNaoEncontrado(cpfCliente)
       } else {
+        alert(replaceUrl(url))
         fetch(replaceUrl(url))
-         .then(resp => resp[0].json())
+         .then(resp => alert(resp[0]))
          .then(cliente => exibeCliente(cliente))
+         .catch(error => alert(error))
       }
 
   }
