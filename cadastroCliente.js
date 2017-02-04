@@ -9,11 +9,11 @@ document.getElementById("cpfCliente").value = cpfCliente
           alert("O campo cpf é obrigatório")
           return
         } else {
-          url = url.concat("&cpfCliente=" + document.getElementById("cpfCliente").value)
+          url = url.concat("cpfCliente=" + document.getElementById("cpfCliente").value)
         }
 
         if (document.getElementById("nome").value){
-          url = url.concat("nome=" + document.getElementById("nome").value)}
+          url = url.concat("&nome=" + document.getElementById("nome").value)}
 
         if (document.getElementById("rg").value){
           url = url.concat("&rg=" + document.getElementById("rg").value)}
