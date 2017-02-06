@@ -1,22 +1,32 @@
 <html>
   <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <meta charset="utf-8">
+      <script src="jquery-3.1.1.min.js"></script>
+      <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+      <script src="materialize/js/materialize.min.js"></script>
       <script type="text/javascript" src="fetch.min.js"></script>
       <script type="text/javascript" src="buscarCliente.js"></script>
       <script type="text/javascript" src="base.js"></script>
-      <meta charset="utf-8">
+
 </head>
 
 <body>
-<h1>Buscar cliente </h1>
+  <nav class="row yellow">
+    <h1 class="blue-text">Buscar cliente </h1>
+</nav>
 
-
-    <label for="cpfCliente">Cpf:</label>
-    <input type="text" id="cpfCliente">
-    <button id="enviar" onclick="buscarPorCpf()"> buscar cliente </button>
-
-    <div id="listaCliente"></div>
-
+<section class="row">
+<div class="col s8 offset-s2">
+  <div class="row">
+    <label for="cpfCliente" class="col s1" >Cpf:</label>
+    <input  type="text" id="cpfCliente" class="col s4">
+    <button class="btn blue col s3 waves-effect waves-light" id="enviar" onclick="buscarPorCpf()"> buscar cliente </button>
+  </div>
+  <div class="row">
+      <div id="listaCliente" class="col s12"></div>
+  </div>
+</div>
+</section>
 </body>
 
 </html>

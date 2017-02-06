@@ -1,33 +1,47 @@
 <html>
   <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <script type="text/javascript" src="fetch.min.js"></script>
+    <meta charset="utf-8">
+    <script src="jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+    <script src="materialize/js/materialize.min.js"></script><script type="text/javascript" src="fetch.min.js"></script>
+    <script type="text/javascript" src="base.js"></script>
 
-      <script type="text/javascript" src="base.js"></script>
-      <meta charset="utf-8">
 </head>
 
 <body>
-<h1>Criar novo pedido </h1>
+  <nav class="row yellow">
+    <h1 class="blue-text">Criar novo pedido </h1>
+  </nav>
 
+<div class="row">
+  <fieldset class="col s8 offset-s2">
   <legend>Cliente</legend>
     <div id="listaCliente"></div>
+  </fieldset>
 
+  <fieldset class="col s8 offset-s2">
+  <legend>Produto</legend>
+    <div class="col s6">
+      <label for="codigo">Codigo do produto:</label>
+      <input type="text" id="codigo">
+    </div>
+    <div class="col s6">
+      <button id="enviar" class="btn blue waves-effect waves-light" onclick="buscarCodigo(event)" type="button"> buscar produto </button>
+    </div>
 
-    <label for="codigo">Codigo do produto:</label>
-    <input type="text" id="codigo">
-    <button id="enviar" onclick="buscarCodigo()"> buscar produto </button>
-
-    <div id="detalheProduto"></div>
+    <div id="detalheProduto" class="col s12"></div>
+  </fieldset>
+<fieldset class="col s8 offset-s2">
 
 <legend>Produtos no pedido</legend>
     <div id="detalhePedido">
 
     </div>
-<p id="valorPedido">Total: R$0,00</p>
 
+    <p id="valorPedido">Total: R$0,00</p>
+</fielset>
 
-
+  </div>
 <script type="text/javascript" src="criarPedido.js"></script>
 </body>
 

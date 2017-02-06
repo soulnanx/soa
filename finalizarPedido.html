@@ -1,21 +1,34 @@
 <html>
   <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <script type="text/javascript" src="fetch.min.js"></script>
-      <script type="text/javascript" src="base.js"></script>
-      <meta charset="utf-8">
+    <meta charset="utf-8">
+    <script src="jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+    <script src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="fetch.min.js"></script>
+    <script type="text/javascript" src="base.js"></script>
+
 </head>
 
 <body>
-<h1>Finalizar Pedido </h1>
+  <nav class="row yellow">
+    <h1 class="blue-text">Finalizar pedido</h1>
+  </nav>
 
-    <legend>Cliente</legend>
-    <div id="detalhePedido"></div>
-    <p id="valorPedido">Total: R$0,00</p>
+<section class="row">
 
-    <button id="enviar" onclick="cancelarPedido()"> Cancelar compra </button>
-    <button id="enviar" onclick="finalizar()"> Finalizar compra </button>
+    <fieldset class="col s8 offset-s2">
+      <div class="row">
+        <legend class="col s12">Resumo do pedido</legend>
+        <div class="col s12"id="detalhePedido"></div>
+        <p class="col s12" id="valorPedido">Total: R$0,00</p>
+      </div>
 
+  <div class="row">
+    <button id="enviar" class="btn red" onclick="cancelarPedido()"> Cancelar compra </button>
+    <button id="enviar" class="btn blue" onclick="navegarParaInicio()"> Finalizar compra </button>
+  </div>
+  </fieldset>
+</section>
 
 
 

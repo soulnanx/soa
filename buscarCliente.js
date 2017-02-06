@@ -22,18 +22,18 @@
   function exibeCliente(cliente){
 
     var html =""
-    html = html.concat("<ul>")
-    html = html.concat("<li><strong>CPF:</strong> " + cliente.cpfCliente +"</li>")
-    html = html.concat("<li><strong>Nome:</strong> " + cliente.nome +"</li>")
-    html = html.concat("<li><strong>RG:</strong> " + cliente.rg +"</li>")
-    html = html.concat("<li><strong>TelefoneFixo:</strong> " + cliente.telefoneFixo +"</li>")
-    html = html.concat("<li><strong>TelefoneMovel:</strong> " + cliente.telefoneFixo +"</li>")
-    html = html.concat("<li><strong>EnderecoCobranca:</strong> " + cliente.enderecoCobranca +"</li>")
-    html = html.concat("<li><strong>EnderecoEntrega:</strong> " + cliente.enderecoEntrega +"</li>")
+    html = html.concat("<ul class='collection'>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>CPF:</strong> " + cliente.cpfCliente +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>Nome:</strong> " + cliente.nome +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>RG:</strong> " + cliente.rg +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>TelefoneFixo:</strong> " + cliente.telefoneFixo +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>TelefoneMovel:</strong> " + cliente.telefoneFixo +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>EnderecoCobranca:</strong> " + cliente.enderecoCobranca +"</li>")
+    html = html.concat("<li class='collection-item'><strong class='blue-text'>EnderecoEntrega:</strong> " + cliente.enderecoEntrega +"</li>")
     html = html.concat("</ul>")
 
-    html = html.concat("<button id='deletar' onclick='deletar(" + cliente.cpfCliente + ")'> delete </button>")
-    html = html.concat("<button id='enviar' onclick='navegarParaCriarPedido(" + cliente.cpfCliente + ")'> Criar pedido </button>")
+    //html = html.concat("<button id='deletar' onclick='deletar(" + cliente.cpfCliente + ")'> delete </button>")
+    html = html.concat("<button id='enviar' class='btn blue waves-effect waves-light' onclick='navegarParaCriarPedido(" + cliente.cpfCliente + ")'> Criar pedido </button>")
     document.getElementById("listaCliente").innerHTML = html;
 
   }

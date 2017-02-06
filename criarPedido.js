@@ -5,8 +5,9 @@ var htmlPedido =""
 var produtoSelecionado = ""
 var pedido = []
 
-  function buscarCodigo(){
-
+  function buscarCodigo(event){
+     console.log(event)
+      event.preventDefault()
       var url = "http://localhost:8081/produto/?ComandoSQL=SELECT&"
       var codigo = document.getElementById("codigo").value
 
@@ -37,8 +38,8 @@ var pedido = []
          .catch(error => alert(error))
   }
 
-  function adicionarProdutoNoPedido(){
-
+  function adicionarProdutoNoPedido(event){
+      // event.preventDefault()
       for (item of pedido){
         if (produtoSelecionado.codigo == item.codigo){
           alert("esse produto já foi adicionaodo no carrinho")
@@ -75,7 +76,8 @@ var pedido = []
   }
 
   function updateCodigo(retorno){
-
+    console.log("+++++++")
+    console.log(retorno)
     if (codigoPedido == 0){
         codigoPedido = retorno[0].id
     }
@@ -121,7 +123,7 @@ var pedido = []
     html = html.concat("<input type='text' id='qtd' value='0'></li>")
     html = html.concat("</ul>")
 
-    html = html.concat("<button onclick='adicionarProdutoNoPedido()'> Adicionar ao pedido </button>")
+    html = html.concat("<button class='btn blue waves-effect waves-light' onclick='adicionarProdutoNoPedido(event)' type='button'> Adicionar ao pedido </button>")
     document.getElementById("detalheProduto").innerHTML = html;
 
     produtoSelecionado = produto
@@ -131,11 +133,11 @@ var pedido = []
     document.getElementById("detalheProduto").innerHTML = "";
 
     pedido.push(produto)
-    htmlPedido = htmlPedido.concat("<ul style='list-style-type: none;'>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Codigo:</strong> " + produto.codigo +"</li>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Nome:</strong> " + produto.nome +"</li>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Estoque:</strong> " + produto.qtd +"</li>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Valor:</strong> R$" + produto.valor +"</li>")
+    htmlPedido = htmlPedido.concat("<ul class='row'>")
+    htmlPedido = htmlPedido.concat("<li class='col s3'><strong>Codigo:</strong> " + produto.codigo +"</li>")
+    htmlPedido = htmlPedido.concat("<li class='col s3'><strong>Nome:</strong> " + produto.nome +"</li>")
+    htmlPedido = htmlPedido.concat("<li class='col s3'><strong>Estoque:</strong> " + produto.qtd +"</li>")
+    htmlPedido = htmlPedido.concat("<li class='col s3'><strong>Valor:</strong> R$" + produto.valor +"</li>")
     htmlPedido = htmlPedido.concat("</ul>")
     htmlPedido = htmlPedido.concat("</br>")
 
@@ -148,8 +150,19 @@ var pedido = []
     var total = 0
     for (item of pedido){total += item.qtd * item.valor}
 
+    var HTML = "<div class='row'>";
+        HTML += "<div class='col s6'> Total R$" + total.toFixed(2) + "</div>";
+        HTML += "<div class='col s6'>";
+        HTML += "<button  class='btn blue waves-effect waves-light' onclick='finalizar()'> Finalizar pedido </button>";
+        HTML += "</div></div>";
+        document.getElementById("valorPedido").innerHTML = HTML;
+        //ou com jQuery
+        //$('#valorPedido').html(HTML);
+/*
+    document.getElementById("valorPedido").innerHTML = "<div class='col s6'>" + total.toFixed(2);
     document.getElementById("valorPedido").innerHTML = "Total R$" + total.toFixed(2);
-    document.getElementById("valorPedido").innerHTML += "<button onclick='finalizar()'> Finalizar pedido </button>"
+    document.getElementById("valorPedido").innerHTML += "<button  class='btn blue waves-effect waves-light' onclick='finalizar()'> Finalizar pedido </button>"
+*/
   }
 
   function finalizar(){

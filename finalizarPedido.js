@@ -57,17 +57,16 @@ var pedido = ""
     var produto = itemPedido.produto
 
 
-    htmlPedido = htmlPedido.concat("<ul style='list-style-type: none;'>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Codigo:</strong> " + produto.codigo +"</li>")
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Nome:</strong> " + produto.nome +"</li>")
+    htmlPedido = htmlPedido.concat("<ul class='collection'>")
+    htmlPedido = htmlPedido.concat("<li class='collection-item'><strong>Codigo:</strong> " + produto.codigo +"</li>")
+    htmlPedido = htmlPedido.concat("<li class='collection-item'><strong>Nome:</strong> " + produto.nome +"</li>")
 
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Quantidade:</strong> ")
-    htmlPedido = htmlPedido.concat("<input type='text' value=' " + itemPedido.quantidade+ "  '>")
+    htmlPedido = htmlPedido.concat("<li class='collection-item'><strong>Quantidade:</strong>" + itemPedido.quantidade )
     htmlPedido = htmlPedido.concat("</li>")
 
-    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Valor:</strong> R$" + produto.valor +"</li>")
+    htmlPedido = htmlPedido.concat("<li class='collection-item'><strong>Valor:</strong> R$" + produto.valor +"</li>")
     htmlPedido = htmlPedido.concat("</ul>")
-    htmlPedido = htmlPedido.concat("</br></br>")
+
 
     document.getElementById("detalhePedido").innerHTML = htmlPedido;
 
