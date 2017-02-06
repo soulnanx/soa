@@ -9,13 +9,19 @@
 
 <body>
 <h1>Criar novo pedido </h1>
+
+  <legend>Cliente</legend>
     <div id="listaCliente"></div>
+
 
     <label for="codigo">Codigo do produto:</label>
     <input type="text" id="codigo">
     <button id="enviar" onclick="buscarCodigo()"> buscar produto </button>
 
-    <div id="listaProduto"></div>
+    <div id="detalheProduto"></div>
+
+<legend>Produtos no pedido</legend>
+    <div id="detalhePedido"></div>
 
 
 <script type="text/javascript" src="criarPedido.js"></script>

@@ -1,8 +1,11 @@
 var cpfCliente = getParameterByName("cpf")
 buscarPorCpf(cpfCliente)
 var codigoPedido = 0
+var htmlPedido =""
+var produtoSelecionado = ""
 
   function buscarCodigo(){
+
       var url = "http://localhost:8081/produto/?ComandoSQL=SELECT&"
       var codigo = document.getElementById("codigo").value
 
@@ -44,7 +47,7 @@ var codigoPedido = 0
       } else {
          quantidadeEstoque = quantidadeEstoque - quantidade
       }
-
+      produtoSelecionado.qtd = quantidade
       var urlUpdateEstoque = "http://localhost:8081/produto/?ComandoSQL=UPDATE&codigo=" + codigo + "&quantidade=" + quantidadeEstoque
       var urlCreatePedido = "http://localhost:8081/pedido/?ComandoSQL=INSERT&id=" + codigoPedido + "&cpfCliente="+ cpfCliente + "&codigo="+ codigo + "&quantidade=" + quantidade
 
@@ -53,13 +56,22 @@ var codigoPedido = 0
       console.log("urlCreatePedido")
       console.log(urlCreatePedido)
 
-      fetch(replaceUrl(urlCreatePedido))
-         .then(resp => {console.log(resp.json())})
+      fetch(urlCreatePedido)
+         .then(resp => resp.json() )
+         .then(retorno => {exibePedido(produtoSelecionado);updateCodigo(retorno)})
          .catch(error => alert(error))
 
-      fetch(replaceUrl(urlUpdateEstoque))
+      fetch(urlUpdateEstoque)
          .then(resp => {console.log(resp.json())})
          .catch(error => alert(error))
+  }
+
+  function updateCodigo(retorno){
+
+    if (codigoPedido == 0){
+        codigoPedido = retorno[0].id
+    }
+    console.log("codigo do pedido" + codigoPedido)
   }
 
   function exibeCliente(cliente){
@@ -79,6 +91,16 @@ var codigoPedido = 0
 
   function exibeProduto(produto){
     console.log(produto)
+    var mensagemStatus
+
+    if (produto.status = "F"){
+      mensagemStatus = "Produto indisponivel no fornecedor"
+    } else if (produto.status = "E"){
+      mensagemStatus = "Produto indisponivel na empresa"
+    } else {
+      mensagemStatus = "Produto disponivel"
+    }
+
     var html =""
     html = html.concat("<ul>")
     html = html.concat("<li><strong>CPF:</strong> " + produto.codigo +"</li>")
@@ -86,14 +108,27 @@ var codigoPedido = 0
     html = html.concat("<li><strong>Estoque:</strong> " + produto.quantidade +"</li>")
     html = html.concat("<li><strong>Valor:</strong> R$" + produto.valor +"</li>")
     html = html.concat("<li><strong>Desconto Maximo:</strong> R$" + produto.descontoMaximo +"</li>")
+    html = html.concat("<li><strong>Status:</strong> " + mensagemStatus +"</li>")
     html = html.concat("<li><label for='qtd'>Quantidade:</label>")
     html = html.concat("<input type='text' id='qtd' value='0'></li>")
     html = html.concat("</ul>")
 
-
-
     html = html.concat("<button onclick='adicionarProdutoNoPedido(" + produto.codigo + "," + produto.quantidade + ")'> Adicionar ao pedido </button>")
-    document.getElementById("listaProduto").innerHTML = html;
+    document.getElementById("detalheProduto").innerHTML = html;
+
+    produtoSelecionado = produto
+  }
+
+  function exibePedido(produto){
+    htmlPedido = htmlPedido.concat("<ul style='list-style-type: none;'>")
+    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>codigo:</strong> " + produto.codigo +"</li>")
+    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Nome:</strong> " + produto.nome +"</li>")
+    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Estoque:</strong> " + produto.quantidade +"</li>")
+    htmlPedido = htmlPedido.concat("<li style='float: left;'><strong>Valor:</strong> R$" + produto.valor +"</li>")
+    htmlPedido = htmlPedido.concat("</ul>")
+    htmlPedido = htmlPedido.concat("</br>")
+
+    document.getElementById("detalhePedido").innerHTML = htmlPedido;
 
   }
 
