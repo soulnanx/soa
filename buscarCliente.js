@@ -47,7 +47,7 @@
     var html =""
     html = html.concat("<p>Cliente não encontrado!</p>")
 
-    html = html.concat("<button id='cadastrar' onclick='navegarParaCadastro(" + cpfCliente + ")'> cadastrar cliente </button>")
+    html = html.concat("<button id='cadastrar' class='btn blue' onclick='navegarParaCadastro(" + cpfCliente + ")'> cadastrar cliente </button>")
     document.getElementById("listaCliente").innerHTML = html;
 
   }

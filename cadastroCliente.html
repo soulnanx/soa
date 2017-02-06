@@ -3,49 +3,63 @@
     <meta charset="utf-8">
     <script src="jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+    <link rel="stylesheet" href="base.css" >
     <script src="materialize/js/materialize.min.js"></script><script type="text/javascript" src="base.js"></script>
     <script type="text/javascript" src="fetch.min.js"></script>
-
 
   </head>
 
 <body>
 
-<table>
+  <nav class="row yellow">
+    <div class="col s12">
+    <h1 class="blue-text h1">Cadastrar cliente </h1>
+    </div>
+  </nav>
 
-<tr>
-    <td><label for="cpfCliente">Cpf:</label></td>
-    <td><input type="text" id="cpfCliente"></td>
-</tr>
+<section class="row">
 
-<tr>
-    <td><label for="nome">Nome:</label></td>
-    <td><input type="text" id="nome"></td>
-</tr>
-<tr>
-    <td><label for="rg">Rg:</label></td>
-    <td><input type="text" id="rg"></td>
-</tr>
-<tr>
-    <td><label for="telefoneFixo">Telefone fixo:</label></td>
-    <td><input type="text" id="telefoneFixo"></td>
-</tr>
-<tr>
-    <td><label for="telefoneMovel">Telefone Movel:</label></td>
-    <td><input type="text" id="telefoneMovel"></td>
-</tr>
-<tr>
-    <td><label for="enderecoCobranca">Endereço de cobrança:</label></td>
-    <td><input type="text" id="enderecoCobranca"></td>
-</tr>
-<tr>
-    <td><label for="enderecoEntrega">Endereco de entrega:</label></td>
-    <td><input type="text" id="enderecoEntrega"></td>
-</tr>
-</table>
+<div class="col s8 offset-s2">
 
-  <button id="enviar" onclick="enviar()"> Cadastrar </button>
+  <div class="col s6">
+    <label for="cpfCliente">Cpf:</label>
+    <input type="text" id="cpfCliente">
+  </div>
+
+<div class="col s6">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome">
+</div>
+
+<div class="col s6">
+    <label for="rg">Rg:</label>
+    <input type="text" id="rg">
+</div>
+
+<div class="col s6">
+    <label for="telefoneFixo">Telefone fixo:</label>
+    <input type="text" id="telefoneFixo">
+</div>
+
+<div class="col s6">
+    <label for="telefoneMovel">Telefone Movel:</label>
+    <input type="text" id="telefoneMovel">
+</div>
+
+<div class="col s6">
+    <label for="enderecoCobranca">Endereço de cobrança:</label>
+    <input type="text" id="enderecoCobranca">
+</div>
+<div class="col s12">
+    <label for="enderecoEntrega">Endereco de entrega:</label>
+    <input type="text" id="enderecoEntrega">
+</div>
+
+  <button id="enviar" class="btn blue" onclick="enviar()"> Cadastrar </button>
   <script type="text/javascript" src="cadastroCliente.js"></script>
+
+</div>
+</section>
 
 </body>
 

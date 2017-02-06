@@ -1,8 +1,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="materialize/css/materialize.min.css" >
     <script src="jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+    <link rel="stylesheet" href="base.css" >
     <script src="materialize/js/materialize.min.js"></script>
     <script type="text/javascript" src="fetch.min.js"></script>
     <script type="text/javascript" src="buscarProduto.js"></script>
@@ -11,14 +12,21 @@
 </head>
 
 <body>
-<h1>Buscar cliente </h1>
+  <nav class="row yellow">
+    <div class="col s12">
+      <h1 class="blue-text h1">Buscar cliente</h1>
+    </div>
+  </nav>
 
+    <section class="row">
 
     <label for="cpfCliente">Cpf:</label>
     <input type="text" id="cpfCliente">
     <button id="enviar" onclick="buscarPorCpf()"> buscar cliente </button>
 
     <div id="listaCliente"></div>
+
+  </section>
 
 </body>
 

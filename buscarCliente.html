@@ -3,6 +3,7 @@
       <meta charset="utf-8">
       <script src="jquery-3.1.1.min.js"></script>
       <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+      <link rel="stylesheet" href="base.css" >
       <script src="materialize/js/materialize.min.js"></script>
       <script type="text/javascript" src="fetch.min.js"></script>
       <script type="text/javascript" src="buscarCliente.js"></script>
@@ -12,15 +13,17 @@
 
 <body>
   <nav class="row yellow">
-    <h1 class="blue-text">Buscar cliente </h1>
+    <div class="col s12">
+    <h1 class="blue-text h1">Buscar cliente </h1>
+    </div>
 </nav>
 
 <section class="row">
 <div class="col s8 offset-s2">
-  <div class="row">
-    <label for="cpfCliente" class="col s1" >Cpf:</label>
-    <input  type="text" id="cpfCliente" class="col s4">
-    <button class="btn blue col s3 waves-effect waves-light" id="enviar" onclick="buscarPorCpf()"> buscar cliente </button>
+  <div class="col s4 offset-s4">
+    <label for="cpfCliente" class="" >Cpf:</label>
+    <input  type="text" id="cpfCliente" >
+    <button class="btn blue waves-effect waves-light" id="enviar" onclick="buscarPorCpf()"> buscar cliente </button>
   </div>
   <div class="row">
       <div id="listaCliente" class="col s12"></div>

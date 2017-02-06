@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <script src="jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="materialize/css/materialize.min.css" >
+    <link rel="stylesheet" href="base.css" >
     <script src="materialize/js/materialize.min.js"></script>
     <script type="text/javascript" src="base.js"></script>
     <script type="text/javascript" src="fetch.min.js"></script>
@@ -11,41 +12,45 @@
 
 <body>
 
-  <h1>Cadastro de produtos</h1>
+  <nav class="row yellow">
+    <div class="col s12">
+      <h1 class="blue-text h1">Cadastro de produto</h1>
+    </div>
+  </nav>
 
-<table>
+<section class="row">
+  <div class="col s8 offset-s2">
 
-<tr>
-    <td><label for="codigo">Codigo:</label></td>
-    <td><input type="text" id="codigo"></td>
-</tr>
+<div class="col s6">
+    <label for="codigo" >Codigo:</label>
+    <input type="text" id="codigo">
+</div>
+<div class="col s6">
+    <label for="valor" >Valor:</label>
+    <input type="text"  id="valor">
+</div>
+<div class="col s8">
+    <label for="nome" >Nome:</label>
+    <input type="text" id="nome">
+    </div>
+<div class="col s4">
+    <label for="quantidade" >Quantidade:</label>
+    <input type="text" id="quantidade" maxlength="3">
+    </div>
+<div class="col s6">
+    <label for="descontoMaximo" >Desconto maximo:</label>
+    <input type="text"  id="descontoMaximo">
+    </div>
+<div class="col s6">
+    <label for="statusProduto" >Status</label>
+    <input type="text" id="statusProduto">
+    </div>
 
-<tr>
-    <td><label for="valor">Valor:</label></td>
-    <td><input type="text" id="valor"></td>
-</tr>
-<tr>
-    <td><label for="nome">Nome:</label></td>
-    <td><input type="text" id="nome"></td>
-</tr>
-<tr>
-    <td><label for="quantidade">Quantidade:</label></td>
-    <td><input type="text" id="quantidade" maxlength="3"></td>
-</tr>
-<tr>
-    <td><label for="descontoMaximo">Desconto maximo:</label></td>
-    <td><input type="text" id="descontoMaximo"></td>
-</tr>
-<tr>
-    <td><label for="statusProduto">Status</label></td>
-    <td><input type="text" id="statusProduto"></td>
-</tr>
 
-</table>
-
-  <button id="enviar" onclick="enviar()"> Cadastrar </button>
+  <button id="enviar" onclick="enviar()" class="btn blue"> Cadastrar </button>
   <script type="text/javascript" src="cadastroProduto.js"></script>
-
+</div>
+</section>
 </body>
 
 </html>
