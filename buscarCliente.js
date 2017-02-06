@@ -15,10 +15,9 @@
       } else if (cpfCliente == 321){
         exibeClienteNaoEncontrado(cpfCliente)
       } else {
-        alert(replaceUrl(url))
         fetch(replaceUrl(url))
-         .then(resp => alert(resp[0]))
-         .then(cliente => exibeCliente(cliente))
+         .then(resp => resp.json())
+         .then(clientes => exibeCliente(clientes[0]))
          .catch(error => alert(error))
       }
 
@@ -37,7 +36,8 @@
     html = html.concat("<li><strong>EnderecoEntrega:</strong> " + cliente.enderecoEntrega +"</li>")
     html = html.concat("</ul>")
 
-    html = html.concat("<button id='enviar' onclick='deletar(" + cliente.cpfCliente + ")'> delete </button>")
+    html = html.concat("<button id='deletar' onclick='deletar(" + cliente.cpfCliente + ")'> delete </button>")
+    html = html.concat("<button id='enviar' onclick='navegarParaCriarPedido(" + cliente.cpfCliente + ")'> Criar pedido </button>")
     document.getElementById("listaCliente").innerHTML = html;
 
   }
@@ -58,6 +58,10 @@
 
   function navegarParaCadastro(cpfCliente){
     window.location.replace("cadastroCliente.html?cpf=" + cpfCliente);
+  }
+
+  function navegarParaCriarPedido(cpfCliente){
+    window.location.replace("criarPedido.html?cpf=" + cpfCliente);
   }
 
   function mockDeCliente(){
