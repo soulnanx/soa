@@ -1,4 +1,4 @@
-var cpfCliente = getParameterByName("cpf")
+var cpfCliente = getParameterByName("cpfCliente")
 document.getElementById("cpfCliente").value = cpfCliente
 
 
@@ -30,13 +30,14 @@ document.getElementById("cpfCliente").value = cpfCliente
         if (document.getElementById("enderecoEntrega").value){
           url = url.concat("&enderecoEntrega=" + document.getElementById("enderecoEntrega").value)}
 
-        alert(replaceUrl(url))
-
         fetch(replaceUrl(url))
-	       .then(resp => {alert("ok");resp.json()})
-         .then(api => alert(api))
+	       .then(resp => navegarParaCriarPedido())
          .catch(error => alert("Erro ao tentar " + url))
 
+    }
+
+    function navegarParaCriarPedido(){
+        window.location.replace("criarPedido.html?cpfCliente=" + cpfCliente);
     }
 
     function buscarPorCpf(cpfCliente){

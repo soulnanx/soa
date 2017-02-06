@@ -10,16 +10,12 @@
         url = url.concat("cpfCliente=" + cpfCliente)
       }
 
-      if (cpfCliente == 123){
-        exibeCliente(mockDeCliente())
-      } else if (cpfCliente == 321){
-        exibeClienteNaoEncontrado(cpfCliente)
-      } else {
+
         fetch(replaceUrl(url))
          .then(resp => resp.json())
          .then(clientes => exibeCliente(clientes[0]))
-         .catch(error => alert(error))
-      }
+         .catch(error => exibeClienteNaoEncontrado(cpfCliente))
+
 
   }
 
@@ -57,20 +53,9 @@
   }
 
   function navegarParaCadastro(cpfCliente){
-    window.location.replace("cadastroCliente.html?cpf=" + cpfCliente);
+    window.location.replace("cadastroCliente.html?cpfCliente=" + cpfCliente);
   }
 
   function navegarParaCriarPedido(cpfCliente){
-    window.location.replace("criarPedido.html?cpf=" + cpfCliente);
-  }
-
-  function mockDeCliente(){
-    cliente = {"nome":"João",
-    "cpfCliente": 654654654,
-    "rg":321321321,
-    "telefoneFixo": "6546-6412",
-    "telefoneMovel": "4444-5555",
-    "enderecoCobranca":"Rua hipodromo 1024",
-    "enderecoEntrega": "Rua Almirante brasil"}
-    return cliente
+    window.location.replace("criarPedido.html?cpfCliente=" + cpfCliente);
   }
